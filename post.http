@@ -1,0 +1,29 @@
+GET http://localhost:3000/api/posts
+
+###
+
+GET http://localhost:3000/api/posts/9
+
+###
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+  "slug": "4x-text-9sososssasasasas",
+  "title": "je t`est la databasessasasa s",
+  "excerpt": "lorem<p>test<p>",
+  "content": "jai vraiment pas dinspi pour du text mdr",
+  "category_id": 5
+}
+
+
+###
+PATCH http://localhost:3000/api/posts/1
+Content-Type: application/json
+
+{
+  "title": "Angular,?"
+}
+
+###
+DELETE http://localhost:3000/api/posts/2

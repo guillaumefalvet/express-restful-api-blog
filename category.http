@@ -1,0 +1,30 @@
+GET http://localhost:3000/api/categories
+
+###
+
+GET http://localhost:3000/api/posts/9
+
+###
+POST http://localhost:3000/api/categories/
+Content-Type: application/json
+
+{
+  "label": "pythons",
+  "route": "/pythons"
+}
+
+
+###
+PATCH http://localhost:3000/api/categories/8
+Content-Type: application/json
+
+{
+  "route": "Angular,?"
+}
+
+###
+DELETE http://localhost:3000/api/categories/2
+
+###
+GET http://localhost:3000/api/posts/category/3
+

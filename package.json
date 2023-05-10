@@ -1,0 +1,40 @@
+{
+  "name": "data-s01e08-atelier-express-oblog-guillaumefalvet",
+  "version": "1.0.0",
+  "description": "Il est temps pour vous de mettre en pratique toutes les bonnes pratiques et les outils que l'on a découvert en ce début de Spé API & Data.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "nodemon index.js",
+    "DBdeploy": "sqitch deploy init",
+    "DBrevert": "sqitch revert -y",
+    "DBseeding": "node ./data/import.js",
+    "DBstock": "npm run DBrevert && npm run DBdeploy && npm run DBseeding"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Starship/Data-S01E08-atelier-express-oblog-guillaumefalvet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Starship/Data-S01E08-atelier-express-oblog-guillaumefalvet/issues"
+  },
+  "homepage": "https://github.com/O-clock-Starship/Data-S01E08-atelier-express-oblog-guillaumefalvet#readme",
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "joi": "^17.9.2",
+    "pg": "^8.10.0"
+  }
+}

@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=oblog
+
+init 2023-05-04T07:07:08Z Guillaume Falvet <guillaume.falvet@gmail.com> # création des tables principales
+domains 2023-05-04T10:46:10Z Guillaume Falvet <guillaume.falvet@gmail.com> # add constraint to slug
