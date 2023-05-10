@@ -1,4 +1,3 @@
-const logger = require('../../log');
 const oblogService = require('../../service/oblog');
 
 function paramsIsNumber(request, response) {
@@ -12,7 +11,7 @@ function paramsIsNumber(request, response) {
   return null;
 }
 const oblogController = {
-  async getAllPosts(request, response) {
+  async getAllPosts(_, response) {
     const result = await oblogService.getAll('post');
     response.status(200).json({
       status: 'succes',
@@ -78,7 +77,7 @@ const oblogController = {
       content: result,
     });
   },
-  async getAllCategories(request, response) {
+  async getAllCategories(_, response) {
     const result = await oblogService.getAll('category');
     response.status(200).json({
       status: 'succes',
