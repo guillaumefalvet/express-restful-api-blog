@@ -5,6 +5,7 @@ const postData = require('./posts.json');
 
 const categoryList = [];
 async function seeding() {
+  console.time('seeding in the database');
   const client = new Client();
   client.connect();
   const dataMapper = {
@@ -55,6 +56,7 @@ async function seeding() {
   });
   // SEEDING IN THE DATABASE
   await Promise.all(promiseListParts);
+  console.timeEnd('seeding in the database');
   client.end();
   process.exit(1);
 }

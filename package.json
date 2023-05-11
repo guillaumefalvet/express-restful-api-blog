@@ -10,8 +10,8 @@
     "dev": "nodemon index.js",
     "DBdeploy": "sqitch deploy",
     "DBrevert": "sqitch revert -y",
-    "DBseeding": "node ./data/import.js",
-    "DBstock": "npm run DBrevert && npm run DBdeploy && npm run DBseeding"
+    "DBseed": "node ./data/import.js",
+    "DBsetup": "npm run DBrevert && npm run DBdeploy && npm run DBseed"
   },
   "repository": {
     "type": "git",

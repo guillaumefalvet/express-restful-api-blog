@@ -4,7 +4,7 @@ function paramsIsNumber(request, response) {
   if (/^(\d+,)*(\d+)$/.test(request.params.id)) {
     return Number(request.params.id);
   }
-  response.status(500).json({
+  response.status(200).json({
     status: 'error',
     message: 'only numbers as id',
   });
