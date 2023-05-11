@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon index.js",
-    "DBdeploy": "sqitch deploy init",
+    "DBdeploy": "sqitch deploy",
     "DBrevert": "sqitch revert -y",
     "DBseeding": "node ./data/import.js",
     "DBstock": "npm run DBrevert && npm run DBdeploy && npm run DBseeding"
