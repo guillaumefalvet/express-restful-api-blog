@@ -4,3 +4,4 @@
 init 2023-05-04T07:07:08Z Guillaume Falvet <guillaume.falvet@gmail.com> # création des tables principales
 domains 2023-05-04T10:46:10Z Guillaume Falvet <guillaume.falvet@gmail.com> # add constraint to slug
 functions 2023-05-11T16:38:23Z Guillaume Falvet <guillaume.falvet@gmail.com> # functions
+views 2023-05-12T06:39:25Z Guillaume Falvet <guillaume.falvet@gmail.com> # views for jointure

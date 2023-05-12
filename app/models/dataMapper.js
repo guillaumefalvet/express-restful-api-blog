@@ -2,7 +2,7 @@ const client = require('./client');
 
 module.exports = {
   async getAll(table) {
-    const { rows } = await client.query(`SELECT * FROM ${table} ORDER BY id;`);
+    const { rows } = await client.query(`SELECT * FROM ${table}_view;`);
     return rows;
   },
   async createOne(table, data) {
