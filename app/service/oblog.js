@@ -18,8 +18,8 @@ const oblogService = {
     }
     return result;
   },
-  async modifyOne(table, id, data) {
-    const result = await dataMapper.modifyOne(table, id, data);
+  async modifyOne(table, data) {
+    const result = await dataMapper.modifyOne(table, data);
     return result;
   },
   async deleteOne(table, id) {

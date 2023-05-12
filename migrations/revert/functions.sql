@@ -3,7 +3,9 @@
 BEGIN;
 
 -- XXX Add DDLs here.
-DROP FUNCTION public."create_category";
-DROP FUNCTION public."create_post";
+DROP FUNCTION public."insert_category";
+DROP FUNCTION public."insert_post";
+DROP FUNCTION public."update_category";
+DROP FUNCTION public."update_post";
 
 COMMIT;

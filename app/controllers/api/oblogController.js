@@ -57,7 +57,8 @@ const oblogController = {
       // eslint-disable-next-line camelcase
       requestedModification.category_id = category_id;
     }
-    const result = await oblogService.modifyOne('post', id, requestedModification);
+    requestedModification.id = id;
+    const result = await oblogService.modifyOne('post', requestedModification);
     response.status(200).json({
       status: 'success',
       data: result,
@@ -103,7 +104,8 @@ const oblogController = {
     if (label) {
       requestedModification.label = label;
     }
-    const result = await oblogService.modifyOne('category', id, requestedModification);
+    requestedModification.id = id;
+    const result = await oblogService.modifyOne('category', requestedModification);
     response.status(200).json({
       status: 'success',
       data: result,

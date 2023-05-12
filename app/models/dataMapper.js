@@ -17,8 +17,10 @@ module.exports = {
     const { rows } = await client.query(`SELECT * FROM ${table} WHERE ${where} = $1`, [id]);
     return rows;
   },
-  async modifyOne(table, id, data) {
-    const { rows } = await client.query(`UPDATE ${table} SET ${Object.keys(data).map((key, index) => `${key} = $${index + 1}`).join(', ')}, updated_at = now() WHERE id = ${id} RETURNING *`, Object.values(data));
+  async modifyOne(table, data) {
+    // eslint-disable-next-line max-len
+    // const { rows } = await client.query(`UPDATE ${table} SET ${Object.keys(data).map((key, index) => `${key} = $${index + 1}`).join(', ')}, updated_at = now() WHERE id = ${id} RETURNING *`, Object.values(data));
+    const { rows } = await client.query(`SELECT * FROM update_${table}($1)`, [JSON.stringify(data)]);
     return rows[0];
   },
   async deleteOne(table, id) {
