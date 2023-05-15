@@ -92,8 +92,14 @@ const oblogController = {
       content: result,
     });
   },
-  // async getCategory(request, response) {
-  // },
+  async getCategory(request, response) {
+    const id = paramsIsNumber(request, response);
+    const result = await oblogService.getOne('category', id);
+    response.status(200).json({
+      status: 'success',
+      data: result,
+    });
+  },
   async modifyCategory(request, response) {
     const id = paramsIsNumber(request, response);
     const { label, route } = request.body;

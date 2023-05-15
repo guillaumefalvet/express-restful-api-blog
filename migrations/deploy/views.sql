@@ -12,11 +12,20 @@ FROM
 
 
 CREATE VIEW category_view AS
-SELECT
-  category.*, post.title
-FROM
-  category
-  JOIN post ON category.id = post.category_id;
+SELECT *, (
+    SELECT json_agg(json_build_object(
+      'id', "post".id,
+      'slug', "post".slug,
+      'title', "post".title,
+      'excerpt', "post".excerpt,
+      'content', "post".content,
+      'created_at', "post".created_at,
+      'updated_at', "post".updated_at
+    )) AS "posts"
+    FROM "post"
+    WHERE "post".category_id = "category".id
+  )
+FROM "category";
 
 COMMIT;
 

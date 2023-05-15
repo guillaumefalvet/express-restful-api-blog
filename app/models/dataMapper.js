@@ -10,7 +10,7 @@ module.exports = {
     return rows[0];
   },
   async getOne(table, id) {
-    const { rows } = await client.query(`SELECT * FROM ${table} WHERE id = $1;`, [id]);
+    const { rows } = await client.query(`SELECT * FROM ${table}_view WHERE id = $1;`, [id]);
     return rows;
   },
   async getAllWhere(table, where, id) {

@@ -26,6 +26,8 @@ router.get('/categories', controllerHandler(oblogController.getAllCategories));
 
 router.post('/categories', validate(oblogCreateCategory), controllerHandler(oblogController.createCategory));
 
+router.get('/categories/:id', controllerHandler(oblogController.getCategory));
+
 router.patch('/categories/:id', validate(oblogModifyCategory), controllerHandler(oblogController.modifyCategory));
 
 router.delete('/categories/:id', controllerHandler(oblogController.deleteCategory));
