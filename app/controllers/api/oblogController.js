@@ -11,6 +11,12 @@ function paramsIsNumber(request, response) {
   return null;
 }
 const oblogController = {
+  /**
+   * API GET /api/posts
+   * responds with all entries from a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async getAllPosts(_, response) {
     const result = await oblogService.getAll('post');
     response.status(200).json({
@@ -18,13 +24,12 @@ const oblogController = {
       content: result,
     });
   },
-  async createPost(request, response) {
-    const result = await oblogService.createOne('post', request.body);
-    response.status(201).json({
-      status: 'success',
-      content: result,
-    });
-  },
+  /**
+   * API GET /api/posts/:id
+   * responds with one entry from a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async getPost(request, response) {
     const id = paramsIsNumber(request, response);
     const result = await oblogService.getOne('post', id);
@@ -33,6 +38,25 @@ const oblogController = {
       data: result,
     });
   },
+  /**
+   * API POST /api/posts
+   * create one entry in a table
+   * @param {Object} request
+   * @param {Object} response
+   */
+  async createPost(request, response) {
+    const result = await oblogService.createOne('post', request.body);
+    response.status(201).json({
+      status: 'success',
+      content: result,
+    });
+  },
+  /**
+   * API PATCH /api/posts/:id
+   * modify one entry in a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async modifyPost(request, response) {
     const id = paramsIsNumber(request, response);
     const {
@@ -64,12 +88,23 @@ const oblogController = {
       data: result,
     });
   },
-
+  /**
+   * API DELETE /api/posts/:id
+   * remove one entry in a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async deletePost(request, response) {
     const id = paramsIsNumber(request, response);
     await oblogService.deleteOne('post', id);
     response.status(204);
   },
+  /**
+   * API GET /api/posts/category/:id
+   * responds with all entries from a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async getPostCategory(request, response) {
     const id = paramsIsNumber(request, response);
     const result = await oblogService.getAllWhere('post', 'category_id', id);
@@ -78,6 +113,12 @@ const oblogController = {
       content: result,
     });
   },
+  /**
+   * API GET /api/categories
+   * responds with all entries from a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async getAllCategories(_, response) {
     const result = await oblogService.getAll('category');
     response.status(200).json({
@@ -85,6 +126,12 @@ const oblogController = {
       content: result,
     });
   },
+  /**
+   * API POST /api/categories
+   * create one entry in a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async createCategory(request, response) {
     const result = await oblogService.createOne('category', request.body);
     response.status(201).json({
@@ -92,6 +139,12 @@ const oblogController = {
       content: result,
     });
   },
+  /**
+   * API GET /api/categories/:id
+   * responds with one entry from a table
+   * @param {Object} request
+   * @param {Object} response
+   */
   async getCategory(request, response) {
     const id = paramsIsNumber(request, response);
     const result = await oblogService.getOne('category', id);
@@ -100,6 +153,13 @@ const oblogController = {
       data: result,
     });
   },
+  /**
+   * API PATCH /api/categories/:id
+   * modify one entry in a table
+   *
+   * @param {Object} request
+   * @param {Object} response
+   */
   async modifyCategory(request, response) {
     const id = paramsIsNumber(request, response);
     const { label, route } = request.body;
@@ -117,6 +177,13 @@ const oblogController = {
       data: result,
     });
   },
+  /**
+   * API DELETE /api/categories/:id
+   * remove one entry in a table
+   *
+   * @param {Object} request
+   * @param {Object} response
+   */
   async deleteCategory(request, response) {
     const id = paramsIsNumber(request, response);
     await oblogService.deleteMultiple('category', 'post', id);
