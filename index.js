@@ -19,9 +19,6 @@ const swaggerOptions = {
 };
 const app = express();
 expressJSDocSwagger(app)(swaggerOptions);
-app.set('view engine', 'ejs');
-app.set('views', './app/views');
-
 app.use(express.json());
 app.use(router);
 

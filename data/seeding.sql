@@ -2,11 +2,11 @@ BEGIN;
 
 -- Insert categories
 INSERT INTO "category" ("label", "route") VALUES
-  ('Technology', 'technology'),
-  ('Science', 'science'),
-  ('Sports', 'sports'),
-  ('Art', 'art'),
-  ('Food', 'food');
+  ('Technology', '/technology'),
+  ('Science', '/science'),
+  ('Sports', '/sports'),
+  ('Art', '/art'),
+  ('Food', '/food');
 
 -- Insert posts
 INSERT INTO "post" ("slug", "title", "excerpt", "content", "category_id")
