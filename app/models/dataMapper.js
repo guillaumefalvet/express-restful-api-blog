@@ -6,7 +6,7 @@ module.exports = {
     return rows;
   },
   async createOne(table, data) {
-    const { rows } = await client.query(`SELECT * FROM create_${table}($1)`, [JSON.stringify(data)]);
+    const { rows } = await client.query(`SELECT * FROM insert_${table}($1)`, [JSON.stringify(data)]);
     return rows[0];
   },
   async getOne(table, id) {

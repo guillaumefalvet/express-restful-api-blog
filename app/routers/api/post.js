@@ -1,8 +1,10 @@
 const express = require('express');
+const debug = require('debug')('app:router:post');
 const oblogController = require('../../controllers/api/oblogController');
 const { oblogCreatePost, oblogModifyPost } = require('../../validations/schemas');
 const controllerHandler = require('../../helpers/controllerHandler');
 const validate = require('../../validations/validate');
+const { postController } = require('../../controllers/api');
 
 const router = express.Router();
 /**
@@ -28,8 +30,7 @@ const router = express.Router();
  * @return {array<Post>} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.get('/', controllerHandler(oblogController.getAllPosts));
-
+router.get('/', controllerHandler(postController.getAll));
 /**
  * POST /api/posts
  *
@@ -41,7 +42,7 @@ router.get('/', controllerHandler(oblogController.getAllPosts));
  * @return {Post} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.post('/', validate(oblogCreatePost), controllerHandler(oblogController.createPost));
+router.post('/', validate(oblogCreatePost), controllerHandler(postController.insertOne));
 /**
  * GET /api/posts/{id}
  *
@@ -53,7 +54,7 @@ router.post('/', validate(oblogCreatePost), controllerHandler(oblogController.cr
  * @return {Post} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.get('/:id', controllerHandler(oblogController.getPost));
+router.get('/:id', controllerHandler(postController.getOne));
 /**
  * PATCH /api/posts/{id}
  *
@@ -66,7 +67,7 @@ router.get('/:id', controllerHandler(oblogController.getPost));
  * @return {Post} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.patch('/:id', validate(oblogModifyPost), controllerHandler(oblogController.modifyPost));
+router.patch('/:id', validate(oblogModifyPost), controllerHandler(postController.modifyOne));
 /**
  * DELETE /api/posts/{id}
  *
@@ -78,7 +79,7 @@ router.patch('/:id', validate(oblogModifyPost), controllerHandler(oblogControlle
  * @return {object} 204 - success response
  * @return {object} 500 - internal server error
  */
-router.delete('/:id', controllerHandler(oblogController.deletePost));
+router.delete('/:id', controllerHandler(postController.deleteOne));
 /**
  * GET /api/posts/category/{id}
  *

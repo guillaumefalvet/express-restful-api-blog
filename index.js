@@ -1,9 +1,8 @@
+const debug = require('debug')('app:server');
 require('dotenv').config();
 const express = require('express');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const expressJSDocSwagger = require('express-jsdoc-swagger');
 const router = require('./app/routers');
-const logger = require('./app/log');
 
 const port = process.env.PORT || 'port number';
 const swaggerOptions = {
@@ -23,5 +22,5 @@ app.use(express.json());
 app.use(router);
 
 app.listen(port, () => {
-  logger.debug(`Server ready: http://localhost:${port}`);
+  debug(`Server ready: http://localhost:${port}`);
 });
