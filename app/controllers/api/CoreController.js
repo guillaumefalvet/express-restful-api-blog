@@ -1,18 +1,10 @@
-const { func } = require('joi');
+/* eslint-disable class-methods-use-this */
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
 const oblogService = require('../../service/oblog');
-
+const isRequestParamIsANumber = require('../../helpers/isRequestParamIsANumber');
 const debug = require('debug')('app:coreController');
 
-function paramsIsNumber(request, response) {
-  if (/^(\d+,)*(\d+)$/.test(request.params.id)) {
-    return Number(request.params.id);
-  }
-  response.status(200).json({
-    status: 'error',
-    message: 'only numbers as id',
-  });
-  return null;
-}
 class CoreController {
   constructor(tableName) {
     CoreController.tableName = tableName;
@@ -28,7 +20,7 @@ class CoreController {
   }
 
   async getOne(request, response) {
-    const id = paramsIsNumber(request, response);
+    const id = isRequestParamIsANumber(request);
     debug(`getOne: ${CoreController.tableName}:${id}`);
     const result = await oblogService.getOne(CoreController.tableName, id);
     response.status(200).json({
@@ -47,7 +39,7 @@ class CoreController {
   }
 
   async modifyOne(request, response) {
-    const id = paramsIsNumber(request, response);
+    const id = isRequestParamIsANumber(request);
     debug(`modifyOne: ${CoreController.tableName}:${id}`);
 
     request.body.id = id;
@@ -59,7 +51,7 @@ class CoreController {
   }
 
   async deleteOne(request, response) {
-    const id = paramsIsNumber(request, response);
+    const id = isRequestParamIsANumber(request);
     debug(`deleteOne: ${CoreController.tableName}:${id}`);
     await oblogService.deleteOne(CoreController.tableName, id);
     response.status(204);
