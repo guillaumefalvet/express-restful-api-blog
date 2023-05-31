@@ -1,8 +1,8 @@
 const express = require('express');
-const oblogController = require('../../controllers/api/oblogController');
 const { oblogCreateCategory, oblogModifyCategory } = require('../../validations/schemas');
 const controllerHandler = require('../../helpers/controllerHandler');
 const validate = require('../../validations/validate');
+const { categoryController } = require('../../controllers/api');
 
 const router = express.Router();
 /**
@@ -25,7 +25,7 @@ const router = express.Router();
  * @return {array<Category>} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.get('/', controllerHandler(oblogController.getAllCategories));
+router.get('/', controllerHandler(categoryController.getAll));
 /**
  * POST /api/categories
  *
@@ -37,7 +37,7 @@ router.get('/', controllerHandler(oblogController.getAllCategories));
  * @return {Category} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.post('/', validate(oblogCreateCategory), controllerHandler(oblogController.createCategory));
+router.post('/', validate(oblogCreateCategory), controllerHandler(categoryController.insertOne));
 /**
  * GET /api/categories/{id}
  *
@@ -49,7 +49,7 @@ router.post('/', validate(oblogCreateCategory), controllerHandler(oblogControlle
  * @return {Category} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.get('/:id', controllerHandler(oblogController.getCategory));
+router.get('/:id', controllerHandler(categoryController.getOne));
 /**
  * PATCH /api/categories/{id}
  *
@@ -63,7 +63,7 @@ router.get('/:id', controllerHandler(oblogController.getCategory));
  * @return {Category} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.patch('/:id', validate(oblogModifyCategory), controllerHandler(oblogController.modifyCategory));
+router.patch('/:id', validate(oblogModifyCategory), controllerHandler(categoryController.modifyOne));
 /**
  * DELETE /api/categories/{id}
  *
@@ -75,6 +75,6 @@ router.patch('/:id', validate(oblogModifyCategory), controllerHandler(oblogContr
  * @return {object} 204 - success response
  * @return {object} 500 - internal server error
  */
-router.delete('/:id', controllerHandler(oblogController.deleteCategory));
+router.delete('/:id', controllerHandler(categoryController.deleteMultiple));
 
 module.exports = router;

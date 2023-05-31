@@ -1,6 +1,5 @@
 const express = require('express');
 const debug = require('debug')('app:router:post');
-const oblogController = require('../../controllers/api/oblogController');
 const { oblogCreatePost, oblogModifyPost } = require('../../validations/schemas');
 const controllerHandler = require('../../helpers/controllerHandler');
 const validate = require('../../validations/validate');
@@ -83,7 +82,7 @@ router.delete('/:id', controllerHandler(postController.deleteOne));
 /**
  * GET /api/posts/category/{id}
  *
- * @summary get all posts from a category
+ * @summary get all posts from a specific category_id
  * @tags Posts
  *
  * @param {number} id.path - category id
@@ -91,6 +90,6 @@ router.delete('/:id', controllerHandler(postController.deleteOne));
  * @return {array<Post>} 200 - success response
  * @return {object} 500 - internal server error
  */
-router.get('/category/:id', controllerHandler(oblogController.getPostCategory));
+router.get('/category/:id', controllerHandler(postController.getPostCategory));
 
 module.exports = router;
